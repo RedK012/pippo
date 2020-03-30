@@ -1,6 +1,6 @@
 package Console;
 
-public abstract class Gioco {
+public class Gioco {
 
     private String genere;
     private String piattaforma;
@@ -8,18 +8,28 @@ public abstract class Gioco {
     private String dataUscita;
     private String descrizione;
     private int disponibile;
+
+    public double getPrezzo() {
+        return prezzo;
+    }
+
+    public void setPrezzo(double prezzo) {
+        this.prezzo = prezzo;
+    }
+
+    private double prezzo;
     
     private String nome;
     
 
-    public Gioco(String genere, String piattaforma, int age, String dataUscita, String descrizione, String nome) {
+    public Gioco(String genere, String piattaforma, int age, String dataUscita, String descrizione, String nome,double prezzo) {
         this.genere = genere;
         this.piattaforma = piattaforma;
         this.age = age;
         this.dataUscita = dataUscita;
         this.descrizione = descrizione;
         this.nome = nome;
-      
+        this.prezzo = prezzo;
     }
 
     protected int disponibile(int disponibile){

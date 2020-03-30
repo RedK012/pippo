@@ -9,6 +9,8 @@ import dbconnection.DbConnection;
 import java.awt.Color;
 import java.awt.Frame;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
@@ -28,7 +30,7 @@ public class Guiainframe extends javax.swing.JFrame {
     JLabel background;
     JButton btn;
     DbConnection db = new DbConnection();
-    JButton[] arrbtn;
+    List<JButton> btnList = new ArrayList<>();
 
     /**
      * Creates new form Guiainframe
@@ -127,7 +129,6 @@ public class Guiainframe extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/sfonfopass.jpg"))); // NOI18N
         passwordJpanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 360));
 
-        addJDialog.setPreferredSize(new java.awt.Dimension(460, 600));
         addJDialog.setResizable(false);
         addJDialog.setSize(new java.awt.Dimension(500, 460));
         addJDialog.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -226,7 +227,6 @@ public class Guiainframe extends javax.swing.JFrame {
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/razer1920x1200.jpg"))); // NOI18N
         addJDialog.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 460));
 
-        modJDialog.setPreferredSize(new java.awt.Dimension(460, 600));
         modJDialog.setResizable(false);
         modJDialog.setSize(new java.awt.Dimension(500, 300));
         modJDialog.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -399,18 +399,13 @@ public class Guiainframe extends javax.swing.JFrame {
 
 
     private void cercaJbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cercaJbtActionPerformed
-        background.removeAll();
-
-        db.xboxList.clear();
-        db.ninList.clear();
-        db.psList.clear();
-        db.pcList.clear();
+            db.listGiochi.clear();
+            btnList.clear();
 
         try {
             db.select2(cercaTxt.getText(), scelta);
 
-            for (Xbox i : db.xboxList) {
-
+            for (Gioco i : db.listGiochi) {
                 y += 50;
                 System.out.println(y);
 
@@ -423,52 +418,7 @@ public class Guiainframe extends javax.swing.JFrame {
                 btn.setForeground(Color.orange);
                 btn.setHorizontalAlignment(SwingConstants.LEFT);
                 background.add(btn);
-
-            }
-
-            for (Nintendo i : db.ninList) {
-                y += 50;
-                System.out.println(y);
-                btn = new JButton(new javax.swing.ImageIcon(getClass().getResource("/Images/prova.png")));
-                btn.setText("           " + i.getNome() + "                "
-                        + "                   " + i.getPrezzo() + "     €");
-                btn.setSize(400, 50);
-                btn.setLocation(105, y);
-                btn.setBackground(Color.black);
-                btn.setForeground(Color.orange);
-                btn.setHorizontalAlignment(SwingConstants.LEFT);
-                background.add(btn);
-
-            }
-            for (PS4 i : db.psList) {
-                y += 50;
-                System.out.println(y);
-                btn = new JButton(new javax.swing.ImageIcon(getClass().getResource("/Images/prova.png")));
-                btn.setText("           " + i.getNome() + "                "
-                        + "                   " + i.getPrezzo() + "     €");
-                btn.setSize(400, 50);
-                btn.setLocation(105, y);
-                btn.setBackground(Color.black);
-                btn.setForeground(Color.orange);
-                btn.setHorizontalAlignment(SwingConstants.LEFT);
-                background.add(btn);
-            }
-            for (PC i : db.pcList) {
-                y += 50;
-                System.out.println(y);
-                btn = new JButton(new javax.swing.ImageIcon(getClass().getResource("/Images/prova.png")));
-                btn.setText("           " + i.getNome() + "                "
-                        + "                   " + i.getPrezzo() + "     €");
-                btn.setSize(400, 50);
-                btn.setLocation(105, y);
-                btn.setBackground(Color.black);
-                btn.setForeground(Color.orange);
-                btn.setHorizontalAlignment(SwingConstants.LEFT);
-                background.add(btn);
-            }
-            for (int i = 0; i < (db.xboxList.size() + db.ninList.size() + db.pcList.size()
-                    + db.psList.size()); i++) {
-                //arrbtn[i=]
+                btnList.add(btn);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Guiainframe.class.getName()).log(Level.SEVERE, null, ex);

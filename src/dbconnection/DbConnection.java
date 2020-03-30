@@ -4,11 +4,10 @@
  * and open the template in the editor.
  */
 package dbconnection;
-import Console.Nintendo;
-import Console.PC;
-import Console.PS4;
-import Console.Xbox;
+import Console.*;
 import form.Guiainframe;
+
+import javax.xml.transform.Result;
 import java.sql.DriverManager;
 import java.sql.*;
 import java.util.ArrayList;
@@ -23,10 +22,7 @@ public class DbConnection {
     private Connection conn;
     private String query;
     private ResultSetMetaData rsmd;
-    public List<Xbox> xboxList = new ArrayList<>();
-    public List<PC> pcList= new ArrayList<>();
-    public List<Nintendo> ninList= new ArrayList<>();
-    public List<PS4> psList= new ArrayList<>();
+    public List<Gioco> listGiochi = new ArrayList<>();
     public Connection startConnection() {
         Connection conn = null;
         try {
@@ -70,28 +66,34 @@ public class DbConnection {
        return nonloso;
     
     }
-    public String  select2(String nome, String piattaforma) throws SQLException {
+
+    public <T extends Gioco> String  select2(String nome, String piattaforma) throws SQLException {
         String nonloso="";
         conn = startConnection();
         query = "SELECT * FROM giochi WHERE nome ='" + nome + "'";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
-        while (rs.next()){
-            if (Guiainframe.scelta.equalsIgnoreCase("xbox")){
-                System.out.println(rs.getString("nome"));
-                 xboxList.add(new Xbox(rs.getInt("quantita"),rs.getDouble("prezzo"),rs.getString("genere"),rs.getString("piattaforma"),
-        rs.getInt("age"),rs.getString("dataUscita"),rs.getString("descrizione"),rs.getString("nome")));
-            }else if(Guiainframe.scelta.equalsIgnoreCase("pc"))
-                 pcList.add(new PC(rs.getInt("quantita"),rs.getDouble("prezzo"),rs.getString("genere"),rs.getString("piattaforma"),
-        rs.getInt("age"),rs.getString("dataUscita"),rs.getString("descrizione"),rs.getString("nome")));
-            else if(Guiainframe.scelta.equalsIgnoreCase("nintendo"))
-                 ninList.add(new Nintendo(rs.getInt("quantita"),rs.getDouble("prezzo"),rs.getString("genere"),rs.getString("piattaforma"),
-        rs.getInt("age"),rs.getString("dataUscita"),rs.getString("descrizione"),rs.getString("nome")));
-            else if (Guiainframe.scelta.equalsIgnoreCase("ps4"))
-                 psList.add(new PS4(rs.getInt("quantita"),rs.getDouble("prezzo"),rs.getString("genere"),rs.getString("piattaforma"),
-        rs.getInt("age"),rs.getString("dataUscita"),rs.getString("descrizione"),rs.getString("nome")));
+        while (rs.next()) {
+            switch(Guiainframe.scelta)
+            {
+                case "xbox":
+                    listGiochi.add(new Xbox(rs.getInt("quantita"), rs.getDouble("prezzo"), rs.getString("genere"), rs.getString("piattaforma"),
+                            rs.getInt("age"), rs.getString("dataUscita"), rs.getString("descrizione"), rs.getString("nome")));
+                    break;
+                case "pc":
+                    listGiochi.add(new PC(rs.getInt("quantita"), rs.getDouble("prezzo"), rs.getString("genere"), rs.getString("piattaforma"),
+                            rs.getInt("age"), rs.getString("dataUscita"), rs.getString("descrizione"), rs.getString("nome")));
+                    break;
+                case "ps4":
+                    listGiochi.add(new PS4(rs.getInt("quantita"), rs.getDouble("prezzo"), rs.getString("genere"), rs.getString("piattaforma"),
+                            rs.getInt("age"), rs.getString("dataUscita"), rs.getString("descrizione"), rs.getString("nome")));
+                    break;
+                case "nintendo":
+                    listGiochi.add(new Nintendo(rs.getInt("quantita"), rs.getDouble("prezzo"), rs.getString("genere"), rs.getString("piattaforma"),
+                            rs.getInt("age"), rs.getString("dataUscita"), rs.getString("descrizione"), rs.getString("nome")));
+                    break;
             }
-                    
+        }
         stmt.close();
         conn.close();
         return nonloso;
@@ -128,7 +130,7 @@ public class DbConnection {
     
     public void update (int ID,String nome, double prezzo) throws SQLException{
         conn = startConnection();
-        query = "UPDATE giochi SET nome ='"+nome+"' AND SET prezzo = '"+prezzo+"' WHERE ID = '"+ID+"'";
+        query = "UPDATE giochi SET nome ='"+nome+"',prezzo = '"+prezzo+"' WHERE ID = '"+ID+"'";
         Statement stmt = conn.createStatement();
         stmt.executeUpdate(query);
         stmt.close();
