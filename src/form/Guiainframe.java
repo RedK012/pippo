@@ -9,6 +9,8 @@ import Login.Users;
 import dbconnection.DbConnection;
 import java.awt.Color;
 import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +20,9 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import javax.swing.plaf.OptionPaneUI;
 
 /**
  *
@@ -29,9 +33,12 @@ public class Guiainframe extends javax.swing.JFrame {
     public static String scelta;
     static int y = 30;
     JLabel background;
+    Users admin = new Users();
     JButton btn;
+    String tipo;
     DbConnection db = new DbConnection();
     List<JButton> btnList = new ArrayList<>();
+    final String DATA="admin";
 
     /**
      * Creates new form Guiainframe
@@ -76,16 +83,19 @@ public class Guiainframe extends javax.swing.JFrame {
         modPaneljbt = new javax.swing.JButton();
         backJbt2 = new javax.swing.JButton();
         jLabel29 = new javax.swing.JLabel();
-        loginAdminjDialog = new javax.swing.JDialog();
+        singjDialog = new javax.swing.JDialog();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        passwordField = new javax.swing.JPasswordField();
-        selectCBox = new javax.swing.JComboBox<>();
-        userNameField = new javax.swing.JTextField();
+        passwordSingTxt = new javax.swing.JPasswordField();
+        userNameSingTxt = new javax.swing.JTextField();
         passBackjbt = new javax.swing.JButton();
         loginBtn = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
+        deleteJDialog = new javax.swing.JDialog();
+        idTxtDelete = new javax.swing.JTextField();
+        deleteJBtDelete = new javax.swing.JButton();
+        backJbtDelete = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
         nintendoJbt = new javax.swing.JButton();
         xboxJbt = new javax.swing.JButton();
         pcJbt = new javax.swing.JButton();
@@ -94,7 +104,8 @@ public class Guiainframe extends javax.swing.JFrame {
         cercaTxt = new javax.swing.JTextField();
         addJbt = new javax.swing.JButton();
         modJbt = new javax.swing.JButton();
-        loginJbt = new javax.swing.JButton();
+        loginJbtMain = new javax.swing.JButton();
+        deleteJbt = new javax.swing.JButton();
 
         addJDialog.setResizable(false);
         addJDialog.setSize(new java.awt.Dimension(550, 500));
@@ -238,49 +249,34 @@ public class Guiainframe extends javax.swing.JFrame {
         jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/razer1920x1200.jpg"))); // NOI18N
         modJDialog.getContentPane().add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 460));
 
-        loginAdminjDialog.setResizable(false);
-        loginAdminjDialog.setSize(new java.awt.Dimension(500, 400));
-        loginAdminjDialog.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        singjDialog.setResizable(false);
+        singjDialog.setSize(new java.awt.Dimension(500, 400));
+        singjDialog.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Password");
-        loginAdminjDialog.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, -1));
+        singjDialog.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Username");
-        loginAdminjDialog.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, -1, -1));
+        singjDialog.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Seleziona Modalità");
-        loginAdminjDialog.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 150, 20));
-
-        passwordField.setText("jPasswordField1");
-        passwordField.addActionListener(new java.awt.event.ActionListener() {
+        passwordSingTxt.setText("jPasswordField1");
+        passwordSingTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordFieldActionPerformed(evt);
+                passwordSingTxtActionPerformed(evt);
             }
         });
-        loginAdminjDialog.getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 160, -1));
+        singjDialog.getContentPane().add(passwordSingTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 160, -1));
 
-        selectCBox.setBackground(new java.awt.Color(0, 102, 102));
-        selectCBox.setForeground(new java.awt.Color(255, 255, 255));
-        selectCBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Utente", "Admin" }));
-        selectCBox.addActionListener(new java.awt.event.ActionListener() {
+        userNameSingTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectCBoxActionPerformed(evt);
+                userNameSingTxtActionPerformed(evt);
             }
         });
-        loginAdminjDialog.getContentPane().add(selectCBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, -1, 20));
-
-        userNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userNameFieldActionPerformed(evt);
-            }
-        });
-        loginAdminjDialog.getContentPane().add(userNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 160, -1));
+        singjDialog.getContentPane().add(userNameSingTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 160, -1));
 
         passBackjbt.setBackground(new java.awt.Color(0, 102, 102));
         passBackjbt.setForeground(new java.awt.Color(255, 255, 255));
@@ -290,7 +286,7 @@ public class Guiainframe extends javax.swing.JFrame {
                 passBackjbtActionPerformed(evt);
             }
         });
-        loginAdminjDialog.getContentPane().add(passBackjbt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 70, 20));
+        singjDialog.getContentPane().add(passBackjbt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 70, 20));
 
         loginBtn.setBackground(new java.awt.Color(0, 102, 102));
         loginBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -300,10 +296,68 @@ public class Guiainframe extends javax.swing.JFrame {
                 loginBtnActionPerformed(evt);
             }
         });
-        loginAdminjDialog.getContentPane().add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 70, 20));
+        singjDialog.getContentPane().add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 70, 20));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/sfonfopass.jpg"))); // NOI18N
-        loginAdminjDialog.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 400));
+        singjDialog.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 400));
+
+        deleteJDialog.setResizable(false);
+        deleteJDialog.setSize(new java.awt.Dimension(400, 400));
+
+        idTxtDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idTxtDeleteActionPerformed(evt);
+            }
+        });
+
+        deleteJBtDelete.setText("Elimina");
+        deleteJBtDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteJBtDeleteActionPerformed(evt);
+            }
+        });
+
+        backJbtDelete.setText("Indietro");
+        backJbtDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJbtDeleteActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("ID");
+
+        javax.swing.GroupLayout deleteJDialogLayout = new javax.swing.GroupLayout(deleteJDialog.getContentPane());
+        deleteJDialog.getContentPane().setLayout(deleteJDialogLayout);
+        deleteJDialogLayout.setHorizontalGroup(
+            deleteJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deleteJDialogLayout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addGroup(deleteJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(deleteJDialogLayout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(deleteJDialogLayout.createSequentialGroup()
+                        .addGroup(deleteJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(idTxtDelete)
+                            .addGroup(deleteJDialogLayout.createSequentialGroup()
+                                .addComponent(deleteJBtDelete)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                                .addComponent(backJbtDelete)))
+                        .addGap(64, 64, 64))))
+        );
+        deleteJDialogLayout.setVerticalGroup(
+            deleteJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deleteJDialogLayout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(idTxtDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addGroup(deleteJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deleteJBtDelete)
+                    .addComponent(backJbtDelete))
+                .addContainerGap())
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -378,13 +432,22 @@ public class Guiainframe extends javax.swing.JFrame {
             }
         });
 
-        loginJbt.setBackground(new java.awt.Color(0, 0, 0));
-        loginJbt.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-        loginJbt.setForeground(new java.awt.Color(240, 240, 240));
-        loginJbt.setText("Login admin");
-        loginJbt.addActionListener(new java.awt.event.ActionListener() {
+        loginJbtMain.setBackground(new java.awt.Color(0, 0, 0));
+        loginJbtMain.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        loginJbtMain.setForeground(new java.awt.Color(240, 240, 240));
+        loginJbtMain.setText("Login admin");
+        loginJbtMain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginJbtActionPerformed(evt);
+                loginJbtMainActionPerformed(evt);
+            }
+        });
+
+        deleteJbt.setBackground(new java.awt.Color(0, 0, 0));
+        deleteJbt.setForeground(new java.awt.Color(255, 255, 255));
+        deleteJbt.setText("delete");
+        deleteJbt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteJbtActionPerformed(evt);
             }
         });
 
@@ -393,50 +456,47 @@ public class Guiainframe extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nintendoJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(xboxJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pcJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ps4Jbt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(pcJbt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(ps4Jbt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(nintendoJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(xboxJbt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(loginJbt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(addJbt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(modJbt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(modJbt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(loginJbtMain, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(addJbt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(29, 29, 29)
                         .addComponent(cercaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(cercaJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                        .addComponent(cercaJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(deleteJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addComponent(deleteJbt)
+                .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cercaJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cercaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(loginJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(loginJbtMain, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(addJbt))
+                    .addComponent(cercaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cercaJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
                 .addComponent(modJbt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(11, 11, 11)
                 .addComponent(nintendoJbt)
                 .addGap(11, 11, 11)
                 .addComponent(xboxJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addComponent(pcJbt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ps4Jbt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addGap(11, 11, 11)
+                .addComponent(ps4Jbt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -446,38 +506,72 @@ public class Guiainframe extends javax.swing.JFrame {
         this.setResizable(false);
         this.setSize(580, 420);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        ImageIcon img = (new javax.swing.ImageIcon(getClass().getResource("/Images/Background.png")));
-        background = new JLabel("", img, JLabel.CENTER);
-        background.setBounds(0, 0, 1600, 600);
+        tipo = "user";       
+          ImageIcon img = (new
+          javax.swing.ImageIcon(getClass().getResource("/Images/Background.png")));
+          background = new JLabel("", img, JLabel.CENTER);
+          background.setBounds(0, 0, 1600, 600);
         this.add(background);
+        if (tipo.equals("user")) {
+            addJbt.setVisible(false);
+            modJbt.setVisible(false);
+            deleteJbt.setVisible(false);
+        }
+       
+         
 
     }
 
 
     private void cercaJbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cercaJbtActionPerformed
-            db.listGiochi.clear();
-            btnList.clear();
 
         try {
-            db.select2(cercaTxt.getText(), scelta);
-
+            //btnList.forEach(e -> e.);
+              db.listGiochi.clear();
+            System.out.println(btnList.size() + " size");
+            btnList.clear();
+            
+            String scelta1=db.select2(cercaTxt.getText(), scelta);
+            if (!scelta1.equals(scelta)){
+                JOptionPane.showMessageDialog(this,"Piattaforma non selezionata\n e/o \ngioco non trovato");
+                System.out.println("__"+scelta1+"__scelta__"+scelta+"__");
+                return;
+            }
             for (Gioco i : db.listGiochi) {
                 y += 50;
+
                 System.out.println(y);
 
-                btn = new JButton(new javax.swing.ImageIcon(getClass().getResource("/Images/prova.png")));
-                btn.setText("           " + i.getNome() + "                "
+                JButton jbtn = new JButton(new javax.swing.ImageIcon(getClass().getResource("/Images/prova.png")));
+                jbtn.setText("           " + i.getNome() + "                "
                         + "                   " + i.getPrezzo() + "     €");
-                btn.setSize(400, 50);
-                btn.setLocation(105, y);
-                btn.setBackground(Color.black);
-                btn.setForeground(Color.orange);
-                btn.setHorizontalAlignment(SwingConstants.LEFT);
-                background.add(btn);
-                btnList.add(btn);
+                jbtn.setSize(400, 50);
+                jbtn.setLocation(105, y);
+                jbtn.setBackground(Color.black);
+                jbtn.setForeground(Color.orange);
+                jbtn.setHorizontalAlignment(SwingConstants.LEFT);
+                btnList.add(jbtn);
+                jbtn.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JOptionPane.showMessageDialog(jbtn, "Titolo\n" + i.getNome() + "\nPiattaforma\n"
+                                + i.getPiattaforma() + "\nGenere\n"
+                                + i.getGenere() + "\nPEGI\n"
+                                + i.getAge() + "\nData di uscita\n"
+                                + i.getDataUscita() + "\nPrezzo\n"
+                                + i.getPrezzo() + "\nDescrizione\n"
+                                + i.getDescrizione() + "\n");
+
+                    }
+                });
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(Guiainframe.class.getName()).log(Level.SEVERE, null, ex);
+
+            btnList.forEach(e -> this.add(e));
+
+          
+
+        } catch (Exception ex) {
+           JOptionPane.showMessageDialog(this,"Piattaforma non selezionata\n e/o \ngioco non trovato");
         }
 
 
@@ -499,23 +593,6 @@ public class Guiainframe extends javax.swing.JFrame {
     private void ps4JbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ps4JbtActionPerformed
         scelta = "ps4";
     }//GEN-LAST:event_ps4JbtActionPerformed
-
-    private void userNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameFieldActionPerformed
-        //PER DATABASE
-    }//GEN-LAST:event_userNameFieldActionPerformed
-
-    @SuppressWarnings("deprecation")
-    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-   
-        try {
-            db.inserimentoUser(userNameField.getText(), passwordField.getText(), selectCBox.getActionCommand());
-        } catch (SQLException ex) {
-            Logger.getLogger(Guiainframe.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
-           
-        
-    }//GEN-LAST:event_loginBtnActionPerformed
 
     private void cercaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cercaTxtActionPerformed
         // TODO add your handling code here:
@@ -552,10 +629,6 @@ public class Guiainframe extends javax.swing.JFrame {
 
     }//GEN-LAST:event_backJbtActionPerformed
 
-    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordFieldActionPerformed
-
     private void piattaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_piattaTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_piattaTxtActionPerformed
@@ -578,32 +651,94 @@ public class Guiainframe extends javax.swing.JFrame {
     }//GEN-LAST:event_backJbt2ActionPerformed
 
     private void modPaneljbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modPaneljbtActionPerformed
-        
-            try {
-                db.update(Integer.parseInt(idTxtMod.getText()), titoloTxtMod.getText(), Double.valueOf(prezzoJtxtMod.getText()));
-            } catch (SQLException ex) {
-                Logger.getLogger(Guiainframe.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
+   
+        try {
+            
+            db.update(Integer.parseInt(idTxtMod.getText()), titoloTxtMod.getText(), Double.valueOf(prezzoJtxtMod.getText()));
+        modJDialog.setVisible(false);
+        this.setVisible(true);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "inserire parametri correti per la ricerca del gioco");
+        }
+
     }//GEN-LAST:event_modPaneljbtActionPerformed
 
     private void titoloTxtModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titoloTxtModActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_titoloTxtModActionPerformed
 
-    private void loginJbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJbtActionPerformed
-        loginAdminjDialog.setVisible(true);
+    private void loginJbtMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginJbtMainActionPerformed
+        singjDialog.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_loginJbtActionPerformed
+
+    }//GEN-LAST:event_loginJbtMainActionPerformed
+
+    @SuppressWarnings("deprecation")
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+
+        try {
+            String []ar= db.selectUser().split(",");
+            admin.setUsername(userNameSingTxt.getText());
+            admin.setPassword(passwordSingTxt.getText());
+            tipo = DATA;
+            if (tipo.equals(DATA) && admin.getUsername().equals(DATA) && admin.getPassword().equals(DATA)) {
+                addJbt.setVisible(true);
+                modJbt.setVisible(true);
+                singjDialog.setVisible(false);
+                deleteJbt.setVisible(true);
+                loginJbtMain.setVisible(false);
+                this.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "username o/e password errata ");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Guiainframe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+    }//GEN-LAST:event_loginBtnActionPerformed
 
     private void passBackjbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passBackjbtActionPerformed
-        loginAdminjDialog.setVisible(false);
+        singjDialog.setVisible(false);
         this.setVisible(true);
     }//GEN-LAST:event_passBackjbtActionPerformed
 
-    private void selectCBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCBoxActionPerformed
-        
-    }//GEN-LAST:event_selectCBoxActionPerformed
+    private void userNameSingTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameSingTxtActionPerformed
+        //PER DATABASE
+    }//GEN-LAST:event_userNameSingTxtActionPerformed
+
+    private void passwordSingTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordSingTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordSingTxtActionPerformed
+
+    private void deleteJbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJbtActionPerformed
+        deleteJDialog.setVisible(true);
+        this.setVisible(false);
+       // db.delete(deleteJbt);
+       
+    }//GEN-LAST:event_deleteJbtActionPerformed
+
+    private void idTxtDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTxtDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idTxtDeleteActionPerformed
+
+    private void backJbtDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJbtDeleteActionPerformed
+         deleteJDialog.setVisible(false);
+        this.setVisible(true);
+    }//GEN-LAST:event_backJbtDeleteActionPerformed
+
+    private void deleteJBtDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteJBtDeleteActionPerformed
+         
+        try {
+            db.delete(Integer.parseInt(idTxtDelete.getText()));
+              deleteJDialog.setVisible(false);
+              this.setVisible(true);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "ID errato o non valido");
+        }
+      
+    }//GEN-LAST:event_deleteJBtDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -646,12 +781,17 @@ public class Guiainframe extends javax.swing.JFrame {
     private javax.swing.JButton addPaneljbt;
     private javax.swing.JButton backJbt;
     private javax.swing.JButton backJbt2;
+    private javax.swing.JButton backJbtDelete;
     private javax.swing.JButton cercaJbt;
     private javax.swing.JTextField cercaTxt;
     private javax.swing.JTextField dataDiUscitaTxt;
+    private javax.swing.JButton deleteJBtDelete;
+    private javax.swing.JDialog deleteJDialog;
+    private javax.swing.JButton deleteJbt;
     private javax.swing.JTextArea descrizioneTxtArea;
     private javax.swing.JTextField etaTxt;
     private javax.swing.JTextField genereTxt;
+    private javax.swing.JTextField idTxtDelete;
     private javax.swing.JTextField idTxtMod;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -671,25 +811,24 @@ public class Guiainframe extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JDialog loginAdminjDialog;
     private javax.swing.JButton loginBtn;
-    private javax.swing.JButton loginJbt;
+    private javax.swing.JButton loginJbtMain;
     private javax.swing.JDialog modJDialog;
     private javax.swing.JButton modJbt;
     private javax.swing.JButton modPaneljbt;
     private javax.swing.JButton nintendoJbt;
     private javax.swing.JButton passBackjbt;
-    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JPasswordField passwordSingTxt;
     private javax.swing.JButton pcJbt;
     private javax.swing.JTextField piattaTxt;
     private javax.swing.JTextField prezzoJtxt;
     private javax.swing.JTextField prezzoJtxtMod;
     private javax.swing.JButton ps4Jbt;
     private javax.swing.JTextField quantitaTxt;
-    private javax.swing.JComboBox<String> selectCBox;
+    private javax.swing.JDialog singjDialog;
     private javax.swing.JTextField titoloTxt;
     private javax.swing.JTextField titoloTxtMod;
-    private javax.swing.JTextField userNameField;
+    private javax.swing.JTextField userNameSingTxt;
     private javax.swing.JButton xboxJbt;
     // End of variables declaration//GEN-END:variables
 

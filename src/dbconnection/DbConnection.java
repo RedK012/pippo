@@ -70,7 +70,7 @@ public class DbConnection {
     public <T extends Gioco> String  select2(String nome, String piattaforma) throws SQLException {
         String nonloso="";
         conn = startConnection();
-        query = "SELECT * FROM giochi WHERE nome ='" + nome + "'";
+        query = "SELECT * FROM giochi WHERE nome ='" + nome + "' AND piattaforma = '"+piattaforma+"'";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
         while (rs.next()) {
@@ -93,6 +93,7 @@ public class DbConnection {
                             rs.getInt("age"), rs.getString("dataUscita"), rs.getString("descrizione"), rs.getString("nome")));
                     break;
             }
+            nonloso= rs.getString("piattaforma");
         }
         stmt.close();
         conn.close();
@@ -108,24 +109,32 @@ public class DbConnection {
 
     }
 
-    public void selectUser() throws SQLException {
+    public String selectUser() throws SQLException {
+        String credentials= "";
         try ( Connection connection = this.startConnection()) {
 
             query = "SELECT * FROM users";
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                System.out.println(rs.getString("username") + " " + rs.getString("password") + " " + rs.getString("tipo"));
-
+                credentials+=rs.getString("username")+",";
+                credentials+=rs.getString("password");
             }
-
-        } catch (Exception ex) {
+            
+        } 
+        catch (Exception ex) {
         }
-
+        return credentials;
     }
 
-    public void delete(String query) {
-        query = "";
+    public void delete(int id) throws SQLException {
+        conn = startConnection();
+        query = "DELETE FROM giochi WHERE ID = '"+id+"'";
+        Statement stmt = conn.createStatement();
+        stmt.executeUpdate(query);
+        stmt.close();
+        conn.close();
+        
     }
     
     public void update (int ID,String nome, double prezzo) throws SQLException{
@@ -195,6 +204,10 @@ public class DbConnection {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public void inserimentoUser(String text, String text0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 

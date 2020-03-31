@@ -10,8 +10,11 @@ public class Users {
         this.username = username;
         this.password = password;
         this.tipo = tipo;
+        
     }
-
+    public Users (){
+        
+    }
     @Override
     public String toString() {
         return "Users{" + "username=" + username + ", password=" + password + ", tipo=" + tipo + '}';
