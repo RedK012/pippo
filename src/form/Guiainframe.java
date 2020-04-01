@@ -21,6 +21,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.plaf.OptionPaneUI;
 
@@ -31,11 +32,12 @@ import javax.swing.plaf.OptionPaneUI;
 public class Guiainframe extends javax.swing.JFrame {
 
     public static String scelta;
-    static int y = 30;
+    static int y = 5;
     JLabel background;
     Users admin = new Users();
     JButton btn;
     String tipo;
+    
     DbConnection db = new DbConnection();
     List<JButton> btnList = new ArrayList<>();
     final String DATA="admin";
@@ -96,16 +98,18 @@ public class Guiainframe extends javax.swing.JFrame {
         deleteJBtDelete = new javax.swing.JButton();
         backJbtDelete = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         nintendoJbt = new javax.swing.JButton();
         xboxJbt = new javax.swing.JButton();
         pcJbt = new javax.swing.JButton();
         ps4Jbt = new javax.swing.JButton();
         cercaJbt = new javax.swing.JButton();
-        cercaTxt = new javax.swing.JTextField();
         addJbt = new javax.swing.JButton();
         modJbt = new javax.swing.JButton();
         loginJbtMain = new javax.swing.JButton();
         deleteJbt = new javax.swing.JButton();
+        jpPannel = new javax.swing.JPanel();
+        cercaTxt = new javax.swing.JTextField();
 
         addJDialog.setResizable(false);
         addJDialog.setSize(new java.awt.Dimension(550, 500));
@@ -143,6 +147,8 @@ public class Guiainframe extends javax.swing.JFrame {
         jLabel11.setText("Quantità");
         addJDialog.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 50, 20));
 
+        titoloTxt.setBackground(new java.awt.Color(102, 102, 102));
+        titoloTxt.setForeground(new java.awt.Color(204, 153, 0));
         titoloTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 titoloTxtActionPerformed(evt);
@@ -150,6 +156,8 @@ public class Guiainframe extends javax.swing.JFrame {
         });
         addJDialog.getContentPane().add(titoloTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 310, -1));
 
+        piattaTxt.setBackground(new java.awt.Color(102, 102, 102));
+        piattaTxt.setForeground(new java.awt.Color(204, 153, 0));
         piattaTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 piattaTxtActionPerformed(evt);
@@ -157,14 +165,21 @@ public class Guiainframe extends javax.swing.JFrame {
         });
         addJDialog.getContentPane().add(piattaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 310, -1));
 
+        genereTxt.setBackground(new java.awt.Color(102, 102, 102));
+        genereTxt.setForeground(new java.awt.Color(204, 153, 0));
         genereTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 genereTxtActionPerformed(evt);
             }
         });
         addJDialog.getContentPane().add(genereTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 310, -1));
+
+        quantitaTxt.setBackground(new java.awt.Color(102, 102, 102));
+        quantitaTxt.setForeground(new java.awt.Color(204, 153, 0));
         addJDialog.getContentPane().add(quantitaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 310, -1));
 
+        dataDiUscitaTxt.setBackground(new java.awt.Color(102, 102, 102));
+        dataDiUscitaTxt.setForeground(new java.awt.Color(204, 153, 0));
         dataDiUscitaTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dataDiUscitaTxtActionPerformed(evt);
@@ -172,14 +187,22 @@ public class Guiainframe extends javax.swing.JFrame {
         });
         addJDialog.getContentPane().add(dataDiUscitaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 310, -1));
 
+        etaTxt.setBackground(new java.awt.Color(102, 102, 102));
+        etaTxt.setForeground(new java.awt.Color(204, 153, 0));
         etaTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 etaTxtActionPerformed(evt);
             }
         });
         addJDialog.getContentPane().add(etaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 310, -1));
+
+        prezzoJtxt.setBackground(new java.awt.Color(102, 102, 102));
+        prezzoJtxt.setForeground(new java.awt.Color(204, 153, 0));
         addJDialog.getContentPane().add(prezzoJtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 310, -1));
 
+        addPaneljbt.setBackground(new java.awt.Color(0, 0, 0));
+        addPaneljbt.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        addPaneljbt.setForeground(new java.awt.Color(204, 153, 0));
         addPaneljbt.setText("Aggiungi");
         addPaneljbt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,12 +211,17 @@ public class Guiainframe extends javax.swing.JFrame {
         });
         addJDialog.getContentPane().add(addPaneljbt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, -1, -1));
 
+        descrizioneTxtArea.setBackground(new java.awt.Color(102, 102, 102));
         descrizioneTxtArea.setColumns(20);
+        descrizioneTxtArea.setForeground(new java.awt.Color(255, 153, 0));
         descrizioneTxtArea.setRows(5);
         jScrollPane2.setViewportView(descrizioneTxtArea);
 
         addJDialog.getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 310, 131));
 
+        backJbt.setBackground(new java.awt.Color(0, 0, 0));
+        backJbt.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        backJbt.setForeground(new java.awt.Color(204, 153, 0));
         backJbt.setText("Indietro");
         backJbt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,7 +230,7 @@ public class Guiainframe extends javax.swing.JFrame {
         });
         addJDialog.getContentPane().add(backJbt, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 390, -1, -1));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/razer1920x1200.jpg"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/wallpaperflare.com_wallpaper.jpg"))); // NOI18N
         addJDialog.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 500));
 
         modJDialog.setResizable(false);
@@ -220,16 +248,24 @@ public class Guiainframe extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(240, 240, 240));
         jLabel13.setText("ID Game");
         modJDialog.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 20));
+
+        idTxtMod.setBackground(new java.awt.Color(102, 102, 102));
         modJDialog.getContentPane().add(idTxtMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 310, -1));
 
+        titoloTxtMod.setBackground(new java.awt.Color(102, 102, 102));
         titoloTxtMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 titoloTxtModActionPerformed(evt);
             }
         });
         modJDialog.getContentPane().add(titoloTxtMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 310, -1));
+
+        prezzoJtxtMod.setBackground(new java.awt.Color(102, 102, 102));
         modJDialog.getContentPane().add(prezzoJtxtMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 310, -1));
 
+        modPaneljbt.setBackground(new java.awt.Color(0, 0, 0));
+        modPaneljbt.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        modPaneljbt.setForeground(new java.awt.Color(255, 153, 0));
         modPaneljbt.setText("Modifica");
         modPaneljbt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,6 +274,9 @@ public class Guiainframe extends javax.swing.JFrame {
         });
         modJDialog.getContentPane().add(modPaneljbt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, -1, -1));
 
+        backJbt2.setBackground(new java.awt.Color(0, 0, 0));
+        backJbt2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        backJbt2.setForeground(new java.awt.Color(255, 153, 0));
         backJbt2.setText("Indietro");
         backJbt2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,7 +285,7 @@ public class Guiainframe extends javax.swing.JFrame {
         });
         modJDialog.getContentPane().add(backJbt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, -1, -1));
 
-        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/razer1920x1200.jpg"))); // NOI18N
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/wallpaperflare.com_wallpaper.jpg"))); // NOI18N
         modJDialog.getContentPane().add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 460));
 
         singjDialog.setResizable(false);
@@ -298,17 +337,19 @@ public class Guiainframe extends javax.swing.JFrame {
         });
         singjDialog.getContentPane().add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 70, 20));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/sfonfopass.jpg"))); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/black-and-white-3d-wallpaper_1920x1080.jpg"))); // NOI18N
         singjDialog.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 400));
 
         deleteJDialog.setResizable(false);
-        deleteJDialog.setSize(new java.awt.Dimension(400, 400));
+        deleteJDialog.setSize(new java.awt.Dimension(260, 190));
+        deleteJDialog.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         idTxtDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idTxtDeleteActionPerformed(evt);
             }
         });
+        deleteJDialog.getContentPane().add(idTxtDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 150, -1));
 
         deleteJBtDelete.setText("Elimina");
         deleteJBtDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -316,6 +357,7 @@ public class Guiainframe extends javax.swing.JFrame {
                 deleteJBtDeleteActionPerformed(evt);
             }
         });
+        deleteJDialog.getContentPane().add(deleteJBtDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
         backJbtDelete.setText("Indietro");
         backJbtDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -323,41 +365,15 @@ public class Guiainframe extends javax.swing.JFrame {
                 backJbtDeleteActionPerformed(evt);
             }
         });
+        deleteJDialog.getContentPane().add(backJbtDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, -1, -1));
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(240, 240, 240));
         jLabel9.setText("ID");
+        deleteJDialog.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 30, 30));
 
-        javax.swing.GroupLayout deleteJDialogLayout = new javax.swing.GroupLayout(deleteJDialog.getContentPane());
-        deleteJDialog.getContentPane().setLayout(deleteJDialogLayout);
-        deleteJDialogLayout.setHorizontalGroup(
-            deleteJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(deleteJDialogLayout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addGroup(deleteJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(deleteJDialogLayout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(deleteJDialogLayout.createSequentialGroup()
-                        .addGroup(deleteJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(idTxtDelete)
-                            .addGroup(deleteJDialogLayout.createSequentialGroup()
-                                .addComponent(deleteJBtDelete)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
-                                .addComponent(backJbtDelete)))
-                        .addGap(64, 64, 64))))
-        );
-        deleteJDialogLayout.setVerticalGroup(
-            deleteJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(deleteJDialogLayout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(idTxtDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(deleteJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteJBtDelete)
-                    .addComponent(backJbtDelete))
-                .addContainerGap())
-        );
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gameover.png"))); // NOI18N
+        deleteJDialog.getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 150));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -403,15 +419,6 @@ public class Guiainframe extends javax.swing.JFrame {
             }
         });
 
-        cercaTxt.setBackground(new java.awt.Color(51, 51, 51));
-        cercaTxt.setFont(new java.awt.Font("Candara", 3, 12)); // NOI18N
-        cercaTxt.setForeground(new java.awt.Color(240, 240, 240));
-        cercaTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cercaTxtActionPerformed(evt);
-            }
-        });
-
         addJbt.setBackground(new java.awt.Color(0, 0, 0));
         addJbt.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         addJbt.setForeground(new java.awt.Color(240, 240, 240));
@@ -443,11 +450,34 @@ public class Guiainframe extends javax.swing.JFrame {
         });
 
         deleteJbt.setBackground(new java.awt.Color(0, 0, 0));
+        deleteJbt.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         deleteJbt.setForeground(new java.awt.Color(255, 255, 255));
-        deleteJbt.setText("delete");
+        deleteJbt.setText("Delete");
         deleteJbt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteJbtActionPerformed(evt);
+            }
+        });
+
+        jpPannel.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout jpPannelLayout = new javax.swing.GroupLayout(jpPannel);
+        jpPannel.setLayout(jpPannelLayout);
+        jpPannelLayout.setHorizontalGroup(
+            jpPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 483, Short.MAX_VALUE)
+        );
+        jpPannelLayout.setVerticalGroup(
+            jpPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        cercaTxt.setBackground(new java.awt.Color(51, 51, 51));
+        cercaTxt.setFont(new java.awt.Font("Candara", 3, 12)); // NOI18N
+        cercaTxt.setForeground(new java.awt.Color(240, 240, 240));
+        cercaTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cercaTxtActionPerformed(evt);
             }
         });
 
@@ -456,47 +486,55 @@ public class Guiainframe extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ps4Jbt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nintendoJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(xboxJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pcJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ps4Jbt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loginJbtMain)
+                    .addComponent(deleteJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(modJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jpPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(modJbt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(loginJbtMain, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(addJbt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(29, 29, 29)
+                        .addGap(30, 30, 30)
                         .addComponent(cercaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cercaJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(deleteJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cercaJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(52, 52, 52))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(deleteJbt)
-                .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cercaJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cercaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jpPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
                         .addComponent(loginJbtMain, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(addJbt))
-                    .addComponent(cercaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cercaJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addComponent(modJbt)
-                .addGap(11, 11, 11)
-                .addComponent(nintendoJbt)
-                .addGap(11, 11, 11)
-                .addComponent(xboxJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(pcJbt)
-                .addGap(11, 11, 11)
-                .addComponent(ps4Jbt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deleteJbt)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addJbt)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(modJbt)
+                        .addGap(18, 18, 18)
+                        .addComponent(nintendoJbt)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(xboxJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(pcJbt)
+                        .addGap(11, 11, 11)
+                        .addComponent(ps4Jbt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 163, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         pack();
@@ -507,10 +545,10 @@ public class Guiainframe extends javax.swing.JFrame {
         this.setSize(580, 420);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         tipo = "user";       
-          ImageIcon img = (new
-          javax.swing.ImageIcon(getClass().getResource("/Images/Background.png")));
-          background = new JLabel("", img, JLabel.CENTER);
-          background.setBounds(0, 0, 1600, 600);
+        ImageIcon img = (new
+          javax.swing.ImageIcon(getClass().getResource("/Images/wallpaperflare.com_wallpaper.jpg")));
+         background = new JLabel("", img, JLabel.CENTER);
+          background.setBounds(0, 0, 1366, 768);
         this.add(background);
         if (tipo.equals("user")) {
             addJbt.setVisible(false);
@@ -518,13 +556,16 @@ public class Guiainframe extends javax.swing.JFrame {
             deleteJbt.setVisible(false);
         }
        
-         
-
+          
+        jpPannel.setOpaque(false);
     }
 
 
     private void cercaJbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cercaJbtActionPerformed
-
+        jpPannel.removeAll();
+        jpPannel.revalidate();
+        jpPannel.repaint();
+        y=5;
         try {
             //btnList.forEach(e -> e.);
               db.listGiochi.clear();
@@ -538,19 +579,19 @@ public class Guiainframe extends javax.swing.JFrame {
                 return;
             }
             for (Gioco i : db.listGiochi) {
-                y += 50;
+             
 
                 System.out.println(y);
-
-                JButton jbtn = new JButton(new javax.swing.ImageIcon(getClass().getResource("/Images/prova.png")));
+                JButton jbtn = new JButton(new javax.swing.ImageIcon(getClass().getResource("/Images/video-game.png")));
                 jbtn.setText("           " + i.getNome() + "                "
                         + "                   " + i.getPrezzo() + "     €");
                 jbtn.setSize(400, 50);
-                jbtn.setLocation(105, y);
+                jbtn.setLocation(10, y);
                 jbtn.setBackground(Color.black);
                 jbtn.setForeground(Color.orange);
                 jbtn.setHorizontalAlignment(SwingConstants.LEFT);
                 btnList.add(jbtn);
+                   y += 50;
                 jbtn.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -564,9 +605,10 @@ public class Guiainframe extends javax.swing.JFrame {
 
                     }
                 });
+               
             }
 
-            btnList.forEach(e -> this.add(e));
+            btnList.forEach(e -> jpPannel.add(e));
 
           
 
@@ -799,6 +841,7 @@ public class Guiainframe extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel27;
@@ -811,6 +854,7 @@ public class Guiainframe extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPanel jpPannel;
     private javax.swing.JButton loginBtn;
     private javax.swing.JButton loginJbtMain;
     private javax.swing.JDialog modJDialog;
