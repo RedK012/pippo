@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dbconnection;
+package Console;
 import Console.*;
 import form.Guiainframe;
 
@@ -27,7 +27,7 @@ public class DbConnection {
         Connection conn = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            String connectionUrl = "jdbc:sqlite:src/dbconnection/DbApp.db";
+            String connectionUrl = "jdbc:sqlite:src/DB/DbApp.db";
             conn = DriverManager.getConnection(connectionUrl);
         } catch (SQLException e) {
             System.out.println("SQL Exception: " + e.toString());
@@ -44,6 +44,19 @@ public class DbConnection {
         stmt.executeUpdate(query);
         stmt.close();
         conn.close();
+    }
+    public  String selctProva(int ciao) throws SQLException{
+        conn=startConnection();
+        String prova="";
+        query = "SELECT * FROM users WHERE ID='"+ ciao+"'";
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        while(rs.next()){
+            prova=rs.getString(1)+" "+rs.getString(2);
+        }
+        stmt.close();
+        conn.close();
+        return prova;
     }
 
     public String select(String nome, String piattaforma) throws SQLException {

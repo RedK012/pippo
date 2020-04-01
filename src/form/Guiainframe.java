@@ -6,7 +6,7 @@ import Console.PC;
 import Console.PS4;
 import Console.Xbox;
 import Login.Users;
-import dbconnection.DbConnection;
+import Console.DbConnection;
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
@@ -74,7 +74,6 @@ public class Guiainframe extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         descrizioneTxtArea = new javax.swing.JTextArea();
         backJbt = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
         modJDialog = new javax.swing.JDialog();
         jLabel21 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
@@ -84,7 +83,6 @@ public class Guiainframe extends javax.swing.JFrame {
         prezzoJtxtMod = new javax.swing.JTextField();
         modPaneljbt = new javax.swing.JButton();
         backJbt2 = new javax.swing.JButton();
-        jLabel29 = new javax.swing.JLabel();
         singjDialog = new javax.swing.JDialog();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -92,12 +90,14 @@ public class Guiainframe extends javax.swing.JFrame {
         userNameSingTxt = new javax.swing.JTextField();
         passBackjbt = new javax.swing.JButton();
         loginBtn = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
         deleteJDialog = new javax.swing.JDialog();
         idTxtDelete = new javax.swing.JTextField();
         deleteJBtDelete = new javax.swing.JButton();
         backJbtDelete = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         nintendoJbt = new javax.swing.JButton();
         xboxJbt = new javax.swing.JButton();
@@ -110,42 +110,34 @@ public class Guiainframe extends javax.swing.JFrame {
         deleteJbt = new javax.swing.JButton();
         jpPannel = new javax.swing.JPanel();
         cercaTxt = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         addJDialog.setResizable(false);
         addJDialog.setSize(new java.awt.Dimension(550, 500));
-        addJDialog.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setForeground(new java.awt.Color(240, 240, 240));
         jLabel3.setText("Titolo");
-        addJDialog.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 37, 20));
 
         jLabel4.setForeground(new java.awt.Color(240, 240, 240));
         jLabel4.setText("Piattaforma");
-        addJDialog.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 65, 20));
 
         jLabel5.setForeground(new java.awt.Color(240, 240, 240));
         jLabel5.setText("Genere");
-        addJDialog.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 47, 20));
 
         jLabel6.setForeground(new java.awt.Color(240, 240, 240));
         jLabel6.setText("      Età");
-        addJDialog.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 40, 20));
 
         jLabel7.setForeground(new java.awt.Color(240, 240, 240));
         jLabel7.setText("Data di uscita");
-        addJDialog.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 80, 20));
 
         jLabel8.setForeground(new java.awt.Color(240, 240, 240));
         jLabel8.setText("Descrizione");
-        addJDialog.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
 
         jLabel12.setForeground(new java.awt.Color(240, 240, 240));
         jLabel12.setText("Prezzo");
-        addJDialog.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, 20));
 
         jLabel11.setForeground(new java.awt.Color(240, 240, 240));
         jLabel11.setText("Quantità");
-        addJDialog.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 50, 20));
 
         titoloTxt.setBackground(new java.awt.Color(102, 102, 102));
         titoloTxt.setForeground(new java.awt.Color(204, 153, 0));
@@ -154,7 +146,6 @@ public class Guiainframe extends javax.swing.JFrame {
                 titoloTxtActionPerformed(evt);
             }
         });
-        addJDialog.getContentPane().add(titoloTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 310, -1));
 
         piattaTxt.setBackground(new java.awt.Color(102, 102, 102));
         piattaTxt.setForeground(new java.awt.Color(204, 153, 0));
@@ -163,7 +154,6 @@ public class Guiainframe extends javax.swing.JFrame {
                 piattaTxtActionPerformed(evt);
             }
         });
-        addJDialog.getContentPane().add(piattaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 310, -1));
 
         genereTxt.setBackground(new java.awt.Color(102, 102, 102));
         genereTxt.setForeground(new java.awt.Color(204, 153, 0));
@@ -172,11 +162,9 @@ public class Guiainframe extends javax.swing.JFrame {
                 genereTxtActionPerformed(evt);
             }
         });
-        addJDialog.getContentPane().add(genereTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 310, -1));
 
         quantitaTxt.setBackground(new java.awt.Color(102, 102, 102));
         quantitaTxt.setForeground(new java.awt.Color(204, 153, 0));
-        addJDialog.getContentPane().add(quantitaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 310, -1));
 
         dataDiUscitaTxt.setBackground(new java.awt.Color(102, 102, 102));
         dataDiUscitaTxt.setForeground(new java.awt.Color(204, 153, 0));
@@ -185,7 +173,6 @@ public class Guiainframe extends javax.swing.JFrame {
                 dataDiUscitaTxtActionPerformed(evt);
             }
         });
-        addJDialog.getContentPane().add(dataDiUscitaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 310, -1));
 
         etaTxt.setBackground(new java.awt.Color(102, 102, 102));
         etaTxt.setForeground(new java.awt.Color(204, 153, 0));
@@ -194,11 +181,9 @@ public class Guiainframe extends javax.swing.JFrame {
                 etaTxtActionPerformed(evt);
             }
         });
-        addJDialog.getContentPane().add(etaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 310, -1));
 
         prezzoJtxt.setBackground(new java.awt.Color(102, 102, 102));
         prezzoJtxt.setForeground(new java.awt.Color(204, 153, 0));
-        addJDialog.getContentPane().add(prezzoJtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 310, -1));
 
         addPaneljbt.setBackground(new java.awt.Color(0, 0, 0));
         addPaneljbt.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -209,15 +194,12 @@ public class Guiainframe extends javax.swing.JFrame {
                 addPaneljbtActionPerformed(evt);
             }
         });
-        addJDialog.getContentPane().add(addPaneljbt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, -1, -1));
 
         descrizioneTxtArea.setBackground(new java.awt.Color(102, 102, 102));
         descrizioneTxtArea.setColumns(20);
         descrizioneTxtArea.setForeground(new java.awt.Color(255, 153, 0));
         descrizioneTxtArea.setRows(5);
         jScrollPane2.setViewportView(descrizioneTxtArea);
-
-        addJDialog.getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 310, 131));
 
         backJbt.setBackground(new java.awt.Color(0, 0, 0));
         backJbt.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -228,29 +210,113 @@ public class Guiainframe extends javax.swing.JFrame {
                 backJbtActionPerformed(evt);
             }
         });
-        addJDialog.getContentPane().add(backJbt, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 390, -1, -1));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/wallpaperflare.com_wallpaper.jpg"))); // NOI18N
-        addJDialog.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 500));
+        javax.swing.GroupLayout addJDialogLayout = new javax.swing.GroupLayout(addJDialog.getContentPane());
+        addJDialog.getContentPane().setLayout(addJDialogLayout);
+        addJDialogLayout.setHorizontalGroup(
+            addJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addJDialogLayout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(titoloTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(addJDialogLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(piattaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(addJDialogLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(genereTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(addJDialogLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(etaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(addJDialogLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(dataDiUscitaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(addJDialogLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(quantitaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(addJDialogLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel12)
+                .addGap(18, 18, 18)
+                .addComponent(prezzoJtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(addJDialogLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel8)
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(addJDialogLayout.createSequentialGroup()
+                .addGap(230, 230, 230)
+                .addComponent(addPaneljbt)
+                .addGap(39, 39, 39)
+                .addComponent(backJbt))
+        );
+        addJDialogLayout.setVerticalGroup(
+            addJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addJDialogLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(addJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titoloTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(addJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(piattaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(addJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(genereTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(addJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(etaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(addJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dataDiUscitaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(addJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quantitaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(addJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prezzoJtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(addJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addJDialogLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jLabel8))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(addJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addPaneljbt)
+                    .addComponent(backJbt)))
+        );
 
         modJDialog.setResizable(false);
         modJDialog.setSize(new java.awt.Dimension(500, 300));
-        modJDialog.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel21.setForeground(new java.awt.Color(240, 240, 240));
         jLabel21.setText("Titolo");
-        modJDialog.getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 37, 20));
 
         jLabel27.setForeground(new java.awt.Color(240, 240, 240));
         jLabel27.setText("Prezzo");
-        modJDialog.getContentPane().add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, 20));
 
         jLabel13.setForeground(new java.awt.Color(240, 240, 240));
         jLabel13.setText("ID Game");
-        modJDialog.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 20));
 
         idTxtMod.setBackground(new java.awt.Color(102, 102, 102));
-        modJDialog.getContentPane().add(idTxtMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 310, -1));
 
         titoloTxtMod.setBackground(new java.awt.Color(102, 102, 102));
         titoloTxtMod.addActionListener(new java.awt.event.ActionListener() {
@@ -258,10 +324,8 @@ public class Guiainframe extends javax.swing.JFrame {
                 titoloTxtModActionPerformed(evt);
             }
         });
-        modJDialog.getContentPane().add(titoloTxtMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 310, -1));
 
         prezzoJtxtMod.setBackground(new java.awt.Color(102, 102, 102));
-        modJDialog.getContentPane().add(prezzoJtxtMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 310, -1));
 
         modPaneljbt.setBackground(new java.awt.Color(0, 0, 0));
         modPaneljbt.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -272,7 +336,6 @@ public class Guiainframe extends javax.swing.JFrame {
                 modPaneljbtActionPerformed(evt);
             }
         });
-        modJDialog.getContentPane().add(modPaneljbt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, -1, -1));
 
         backJbt2.setBackground(new java.awt.Color(0, 0, 0));
         backJbt2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -283,24 +346,63 @@ public class Guiainframe extends javax.swing.JFrame {
                 backJbt2ActionPerformed(evt);
             }
         });
-        modJDialog.getContentPane().add(backJbt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, -1, -1));
 
-        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/wallpaperflare.com_wallpaper.jpg"))); // NOI18N
-        modJDialog.getContentPane().add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 460));
+        javax.swing.GroupLayout modJDialogLayout = new javax.swing.GroupLayout(modJDialog.getContentPane());
+        modJDialog.getContentPane().setLayout(modJDialogLayout);
+        modJDialogLayout.setHorizontalGroup(
+            modJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(modJDialogLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel13)
+                .addGap(19, 19, 19)
+                .addComponent(idTxtMod, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(modJDialogLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(titoloTxtMod, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(modJDialogLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel27)
+                .addGap(18, 18, 18)
+                .addComponent(prezzoJtxtMod, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(modJDialogLayout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addComponent(modPaneljbt)
+                .addGap(41, 41, 41)
+                .addComponent(backJbt2))
+        );
+        modJDialogLayout.setVerticalGroup(
+            modJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(modJDialogLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(modJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idTxtMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(modJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titoloTxtMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(modJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prezzoJtxtMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
+                .addGroup(modJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(modPaneljbt)
+                    .addComponent(backJbt2)))
+        );
 
         singjDialog.setResizable(false);
         singjDialog.setSize(new java.awt.Dimension(500, 400));
-        singjDialog.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Password");
-        singjDialog.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Username");
-        singjDialog.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
 
         passwordSingTxt.setText("jPasswordField1");
         passwordSingTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -308,14 +410,12 @@ public class Guiainframe extends javax.swing.JFrame {
                 passwordSingTxtActionPerformed(evt);
             }
         });
-        singjDialog.getContentPane().add(passwordSingTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 160, -1));
 
         userNameSingTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userNameSingTxtActionPerformed(evt);
             }
         });
-        singjDialog.getContentPane().add(userNameSingTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 160, -1));
 
         passBackjbt.setBackground(new java.awt.Color(0, 102, 102));
         passBackjbt.setForeground(new java.awt.Color(255, 255, 255));
@@ -325,7 +425,6 @@ public class Guiainframe extends javax.swing.JFrame {
                 passBackjbtActionPerformed(evt);
             }
         });
-        singjDialog.getContentPane().add(passBackjbt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 70, 20));
 
         loginBtn.setBackground(new java.awt.Color(0, 102, 102));
         loginBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -335,21 +434,54 @@ public class Guiainframe extends javax.swing.JFrame {
                 loginBtnActionPerformed(evt);
             }
         });
-        singjDialog.getContentPane().add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 70, 20));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/black-and-white-3d-wallpaper_1920x1080.jpg"))); // NOI18N
-        singjDialog.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 400));
+        javax.swing.GroupLayout singjDialogLayout = new javax.swing.GroupLayout(singjDialog.getContentPane());
+        singjDialog.getContentPane().setLayout(singjDialogLayout);
+        singjDialogLayout.setHorizontalGroup(
+            singjDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(singjDialogLayout.createSequentialGroup()
+                .addGap(180, 180, 180)
+                .addComponent(jLabel1))
+            .addGroup(singjDialogLayout.createSequentialGroup()
+                .addGap(170, 170, 170)
+                .addComponent(userNameSingTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(singjDialogLayout.createSequentialGroup()
+                .addGap(180, 180, 180)
+                .addComponent(jLabel2))
+            .addGroup(singjDialogLayout.createSequentialGroup()
+                .addGap(170, 170, 170)
+                .addComponent(passwordSingTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(singjDialogLayout.createSequentialGroup()
+                .addGap(170, 170, 170)
+                .addComponent(passBackjbt, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        singjDialogLayout.setVerticalGroup(
+            singjDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(singjDialogLayout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(jLabel1)
+                .addGap(11, 11, 11)
+                .addComponent(userNameSingTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel2)
+                .addGap(11, 11, 11)
+                .addComponent(passwordSingTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addGroup(singjDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(passBackjbt, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         deleteJDialog.setResizable(false);
         deleteJDialog.setSize(new java.awt.Dimension(260, 190));
-        deleteJDialog.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         idTxtDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idTxtDeleteActionPerformed(evt);
             }
         });
-        deleteJDialog.getContentPane().add(idTxtDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 150, -1));
 
         deleteJBtDelete.setText("Elimina");
         deleteJBtDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -357,7 +489,6 @@ public class Guiainframe extends javax.swing.JFrame {
                 deleteJBtDeleteActionPerformed(evt);
             }
         });
-        deleteJDialog.getContentPane().add(deleteJBtDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
         backJbtDelete.setText("Indietro");
         backJbtDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -365,15 +496,47 @@ public class Guiainframe extends javax.swing.JFrame {
                 backJbtDeleteActionPerformed(evt);
             }
         });
-        deleteJDialog.getContentPane().add(backJbtDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(240, 240, 240));
         jLabel9.setText("ID");
-        deleteJDialog.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 30, 30));
+
+        javax.swing.GroupLayout deleteJDialogLayout = new javax.swing.GroupLayout(deleteJDialog.getContentPane());
+        deleteJDialog.getContentPane().setLayout(deleteJDialogLayout);
+        deleteJDialogLayout.setHorizontalGroup(
+            deleteJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deleteJDialogLayout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(deleteJDialogLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(idTxtDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(deleteJDialogLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(deleteJBtDelete)
+                .addGap(85, 85, 85)
+                .addComponent(backJbtDelete))
+        );
+        deleteJDialogLayout.setVerticalGroup(
+            deleteJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deleteJDialogLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(idTxtDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(deleteJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(deleteJBtDelete)
+                    .addComponent(backJbtDelete)))
+        );
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/wallpaperflare.com_wallpaper.jpg"))); // NOI18N
+
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/wallpaperflare.com_wallpaper.jpg"))); // NOI18N
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/black-and-white-3d-wallpaper_1920x1080.jpg"))); // NOI18N
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gameover.png"))); // NOI18N
-        deleteJDialog.getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 150));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -481,6 +644,13 @@ public class Guiainframe extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -494,7 +664,10 @@ public class Guiainframe extends javax.swing.JFrame {
                     .addComponent(loginJbtMain)
                     .addComponent(deleteJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(modJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(modJbt, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jpPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -533,7 +706,9 @@ public class Guiainframe extends javax.swing.JFrame {
                         .addComponent(pcJbt)
                         .addGap(11, 11, 11)
                         .addComponent(ps4Jbt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 163, Short.MAX_VALUE)))
+                        .addGap(29, 29, 29)
+                        .addComponent(jButton1)
+                        .addGap(0, 111, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -545,8 +720,7 @@ public class Guiainframe extends javax.swing.JFrame {
         this.setSize(580, 420);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         tipo = "user";       
-        ImageIcon img = (new
-          javax.swing.ImageIcon(getClass().getResource("/Images/wallpaperflare.com_wallpaper.jpg")));
+        ImageIcon img = (new javax.swing.ImageIcon(getClass().getResource("/Images/wallpaperflare.com_wallpaper.jpg")));
          background = new JLabel("", img, JLabel.CENTER);
           background.setBounds(0, 0, 1366, 768);
         this.add(background);
@@ -565,7 +739,7 @@ public class Guiainframe extends javax.swing.JFrame {
         jpPannel.removeAll();
         jpPannel.revalidate();
         jpPannel.repaint();
-        y=5;
+              y=5;
         try {
             //btnList.forEach(e -> e.);
               db.listGiochi.clear();
@@ -579,9 +753,7 @@ public class Guiainframe extends javax.swing.JFrame {
                 return;
             }
             for (Gioco i : db.listGiochi) {
-             
-
-                System.out.println(y);
+                //System.out.println(y);
                 JButton jbtn = new JButton(new javax.swing.ImageIcon(getClass().getResource("/Images/video-game.png")));
                 jbtn.setText("           " + i.getNome() + "                "
                         + "                   " + i.getPrezzo() + "     €");
@@ -602,16 +774,12 @@ public class Guiainframe extends javax.swing.JFrame {
                                 + i.getDataUscita() + "\nPrezzo\n"
                                 + i.getPrezzo() + "\nDescrizione\n"
                                 + i.getDescrizione() + "\n");
-
-                    }
-                });
-               
+                      }
+                });   
             }
-
-            btnList.forEach(e -> jpPannel.add(e));
-
-          
-
+            
+           btnList.forEach(e -> jpPannel.add(e));
+           
         } catch (Exception ex) {
            JOptionPane.showMessageDialog(this,"Piattaforma non selezionata\n e/o \ngioco non trovato");
         }
@@ -621,19 +789,22 @@ public class Guiainframe extends javax.swing.JFrame {
 
     private void nintendoJbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nintendoJbtActionPerformed
         scelta = "nintendo";
-
+        JOptionPane.showMessageDialog(nintendoJbt, "hai selezionato Nintendo");
     }//GEN-LAST:event_nintendoJbtActionPerformed
 
     private void xboxJbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xboxJbtActionPerformed
         scelta = "xbox";
+        JOptionPane.showMessageDialog(this, "hai selezionato Xbox");
     }//GEN-LAST:event_xboxJbtActionPerformed
 
     private void pcJbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pcJbtActionPerformed
         scelta = "pc";
+        JOptionPane.showMessageDialog(this, "hai selezionato PC");
     }//GEN-LAST:event_pcJbtActionPerformed
 
     private void ps4JbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ps4JbtActionPerformed
         scelta = "ps4";
+        JOptionPane.showMessageDialog(this, "hai selezionato PS4");
     }//GEN-LAST:event_ps4JbtActionPerformed
 
     private void cercaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cercaTxtActionPerformed
@@ -776,11 +947,21 @@ public class Guiainframe extends javax.swing.JFrame {
             db.delete(Integer.parseInt(idTxtDelete.getText()));
               deleteJDialog.setVisible(false);
               this.setVisible(true);
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "ID errato o non valido");
         }
       
     }//GEN-LAST:event_deleteJBtDeleteActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            
+            String prova=db.selctProva(Integer.parseInt(cercaTxt.getText()));
+            JOptionPane.showMessageDialog(this,prova );
+        } catch (Exception ex) {
+            Logger.getLogger(Guiainframe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -835,6 +1016,7 @@ public class Guiainframe extends javax.swing.JFrame {
     private javax.swing.JTextField genereTxt;
     private javax.swing.JTextField idTxtDelete;
     private javax.swing.JTextField idTxtMod;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
